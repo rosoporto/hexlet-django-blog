@@ -1,4 +1,12 @@
 from django.db import models
+from django.db.models import TextChoices
+
+
+class Position(TextChoices):
+    TRAINEE = 'TR', 'Trainee'
+    JUNIOR = 'JR', 'Junior'
+    SENIOR = 'SR', 'Senior'
+    CEO = 'CEO', 'CEO'
 
 
 class Article(models.Model):
@@ -12,21 +20,11 @@ class Article(models.Model):
 
 
 class Employee(models.Model):
-    TRAINEE = 'TR'
-    JUNIOR = 'JR'
-    SENIOR = 'SR'
-    CEO = 'CEO'
-    CHOICES_PERSONE = [
-        (TRAINEE, 'Trainee'),
-        (JUNIOR, 'Junior'),
-        (SENIOR, 'Senior'),
-        (CEO, 'CEO')
-    ]
     name = models.CharField(max_length=255)
     position = models.CharField(
         max_length=3,
-        choices=CHOICES_PERSONE,
-        default=TRAINEE,
+        choices=Position.choices,
+        default=Position.TRAINEE,
     )
 
     def __str__(self):
