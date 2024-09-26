@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Страница со статьями{% endblock %}
-
 {% block content %}
-    <h1>Article Templates</h1>
-    {{ tags }}  {{ article_id }} 
+    <h1>Список статей</h1>
+    {% for article in articles %}
+        <h2>{{ article.name }}</h2>
+        <div>{{ article.body|slice:":200" }}</div>
+    {% endfor %}
 {% endblock %}
