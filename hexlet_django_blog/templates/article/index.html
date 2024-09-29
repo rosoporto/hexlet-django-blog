@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+      <h1>Статьи</h1>
+      <ul>
+        {% for article in articles %}
+        <li>
+          <h2>{{ article.title }}</h2> 
+          <div>{{ article.body|slice:":200" }}</div>
+        </li>
+        {% endfor %}
+      </ul>
+{% endblock %}

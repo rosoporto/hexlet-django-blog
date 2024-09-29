@@ -5,7 +5,7 @@ from .models import Article, Employee
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at', 'updated_at')
+    list_display = ('name', 'category', 'created_at', 'updated_at')
     search_fields = ['name', 'body']
     list_filter = (('created_at', DateFieldListFilter),)
 

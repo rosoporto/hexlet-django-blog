@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import TextChoices
+from hexlet_django_blog.category.models import Category
 
 
 class Position(TextChoices):
@@ -11,7 +12,9 @@ class Position(TextChoices):
 
 class Article(models.Model):
     name = models.CharField(max_length=200)
+    description = models.CharField(max_length=255, null=True, blank=True)
     body = models.TextField()
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
