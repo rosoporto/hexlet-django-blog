@@ -5,6 +5,7 @@
 
 {% block content %}
       <h1>Статьи</h1>
+      <p><a href="{% url 'article_create' %}">Создать статью</a></p>
       <ul>
         {% for article in articles %}
         <li>
