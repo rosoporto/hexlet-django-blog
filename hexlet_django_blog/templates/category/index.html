@@ -7,10 +7,10 @@
 {% block content %}
       <h1>Категории</h1>
       <ul>
-        {% for categorie in categories %}
-        <li>
-          <h2>{{ categorie.name }}</h2> 
-          <div>{{ categorie.description|slice:":200" }}</div>
+        {% for category in categories %}
+        <li>          
+          <h2><a class="link" href="{% url 'category_single' category.id %}">{{ category.name }}</a></h2>
+          <div>{{ category.description|slice:":200" }}</div>
         </li>
         {% endfor %}
       </ul>

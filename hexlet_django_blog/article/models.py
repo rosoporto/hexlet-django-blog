@@ -14,7 +14,13 @@ class Article(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=255, null=True, blank=True)
     body = models.TextField()
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, blank=True)
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+        related_name='articles'
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

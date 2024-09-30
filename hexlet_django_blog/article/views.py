@@ -15,8 +15,10 @@ class IndexView(View):
 class ArticleSingleView(View):
     def get(self, request, *args, **kwargs):
         article = get_object_or_404(Article, id=kwargs['id'])
-        return render(request, 'articles/single_article.html', context={
+        category = article.category
+        return render(request, 'article/article_single.html', context={
             'article': article,
+            'category': category
         })
 
 
@@ -34,7 +36,3 @@ class ArticleView(View):
 def redirect_example(request, tags='python', article_id=42):
     url = reverse('article', args=(tags, article_id))
     return redirect(url)
-
-
-
-
