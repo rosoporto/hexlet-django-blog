@@ -24,7 +24,7 @@ class ArticleSingleView(View):
 
 
 class ArticleCreateView(View):
-    template_name = 'articles/create.html'
+    template_name = 'article/create.html'
 
     def get(self, request, *args, **kwargs):
         form = ArticleForm()

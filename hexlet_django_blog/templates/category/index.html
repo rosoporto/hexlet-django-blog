@@ -6,6 +6,7 @@
 
 {% block content %}
       <h1>Категории</h1>
+      <p><small><a href="{% url 'category_create' %}">Создать категорию</a></small></p>
       <ul>
         {% for category in categories %}
         <li>          

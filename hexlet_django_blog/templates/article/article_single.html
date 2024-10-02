@@ -5,7 +5,9 @@
 
 
 {% block content %}
-<p><a href="{% url 'category_single' category.id %}">{{ category.name }}</a></p>
-<h1>{{ article.title }}</h1>
+{% if category.id %}
+    <p><a href="{% url 'category_single' category.id %}">{{ category.name }}</a></p>
+{% endif %}
+<h1>{{ article.name }}</h1>
 <h2>by {{ article.body }}</h2>
 {% endblock %}
