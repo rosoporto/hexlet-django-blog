@@ -24,7 +24,7 @@ class ArticleSingleView(View):
 
 
 class ArticleCreateView(View):
-    template_name = 'article/create.html'
+    template_name = 'article/article_create.html'
 
     def get(self, request, *args, **kwargs):
         form = ArticleForm()
@@ -36,6 +36,32 @@ class ArticleCreateView(View):
             form.save()
             return redirect(reverse('articles_index'))
         return render(request, self.template_name, {'form': form})
+
+
+class ArticleUpdateView(View):
+    template_name = 'article/article_update.html'
+
+    def get(self, request, *args, **kwargs):
+        article_id = kwargs.get('id')
+        article = Article.objects.get(id=article_id)
+        form = ArticleForm(instance=article)
+        return render(request, self.template_name, context={
+            'form': form,
+            'article_id': article_id
+        })
+
+    def post(self, request, *args, **kwargs):
+        article_id = kwargs.get('id')
+        article = Article.objects.get(id=article_id)
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('article_single', kwargs={'id': article_id}))
+
+        return render(request, self.template_name, context={
+            'form': form,
+            'article_id': article_id
+        })
 
 
 class ArticleView(View):

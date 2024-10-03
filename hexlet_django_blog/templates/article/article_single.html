@@ -10,4 +10,5 @@
 {% endif %}
 <h1>{{ article.name }}</h1>
 <h2>by {{ article.body }}</h2>
+<p><a href="{% url 'article_update' article.id %}">Редактировать</a></p>
 {% endblock %}

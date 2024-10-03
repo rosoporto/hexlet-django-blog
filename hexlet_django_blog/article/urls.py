@@ -5,6 +5,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='articles_index'),
+    path('<int:id>/edit/', views.ArticleUpdateView.as_view(), name='article_update'),
     path('<int:id>/', views.ArticleSingleView.as_view(), name='article_single'),
     path('create/', views.ArticleCreateView.as_view(), name='article_create'),
     path('redirect_exp/', views.redirect_example, name='redirect_exp'),
